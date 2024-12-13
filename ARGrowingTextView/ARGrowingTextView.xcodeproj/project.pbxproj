@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0607AFFD2C6DF3CA00887951 /* ARGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607AFFC2C6DF3CA00887951 /* ARGrowingTextView.swift */; };
+		0607AFFF2C6DF3CD00887951 /* ARGrowingTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607AFFE2C6DF3CD00887951 /* ARGrowingTextViewDelegate.swift */; };
+		0607B0012C6DF3CF00887951 /* ARTextViewInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607B0002C6DF3CF00887951 /* ARTextViewInternal.swift */; };
+		0607B0032C6DF3D100887951 /* ARTextViewInternalTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607B0022C6DF3D100887951 /* ARTextViewInternalTextStyle.swift */; };
+		0607B0062C6DF80700887951 /* NSItemProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607B0052C6DF80700887951 /* NSItemProvider+Extension.swift */; };
+		0607B0082C6DF88800887951 /* String+TypeIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0607B0072C6DF88800887951 /* String+TypeIdentifiers.swift */; };
+		0614EED12C6F72D700444D29 /* UIPasteboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0614EED02C6F72D700444D29 /* UIPasteboard+Extension.swift */; };
+		0614EED32C6F72E300444D29 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0614EED22C6F72E300444D29 /* NSAttributedString+Extension.swift */; };
+		0614EED52C6F72EF00444D29 /* ARAnimationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0614EED42C6F72EF00444D29 /* ARAnimationContext.swift */; };
+		0614EED82C6F73DF00444D29 /* ARMarkdownTextStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0614EED72C6F73DF00444D29 /* ARMarkdownTextStorage */; };
+		06419FD1299B78F500980935 /* ARGrowingTextView.docc in Sources */ = {isa = PBXBuildFile; fileRef = 06419FD0299B78F500980935 /* ARGrowingTextView.docc */; };
+		06419FD2299B78F500980935 /* ARGrowingTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06419FCF299B78F500980935 /* ARGrowingTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0607AFFC2C6DF3CA00887951 /* ARGrowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGrowingTextView.swift; sourceTree = "<group>"; };
+		0607AFFE2C6DF3CD00887951 /* ARGrowingTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGrowingTextViewDelegate.swift; sourceTree = "<group>"; };
+		0607B0002C6DF3CF00887951 /* ARTextViewInternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTextViewInternal.swift; sourceTree = "<group>"; };
+		0607B0022C6DF3D100887951 /* ARTextViewInternalTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTextViewInternalTextStyle.swift; sourceTree = "<group>"; };
+		0607B0052C6DF80700887951 /* NSItemProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSItemProvider+Extension.swift"; sourceTree = "<group>"; };
+		0607B0072C6DF88800887951 /* String+TypeIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TypeIdentifiers.swift"; sourceTree = "<group>"; };
+		0614EED02C6F72D700444D29 /* UIPasteboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Extension.swift"; sourceTree = "<group>"; };
+		0614EED22C6F72E300444D29 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		0614EED42C6F72EF00444D29 /* ARAnimationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAnimationContext.swift; sourceTree = "<group>"; };
+		06419FCC299B78F500980935 /* ARGrowingTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARGrowingTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06419FCF299B78F500980935 /* ARGrowingTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARGrowingTextView.h; sourceTree = "<group>"; };
+		06419FD0299B78F500980935 /* ARGrowingTextView.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ARGrowingTextView.docc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06419FC9299B78F500980935 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0614EED82C6F73DF00444D29 /* ARMarkdownTextStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0607B0042C6DF3DA00887951 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0607AFFE2C6DF3CD00887951 /* ARGrowingTextViewDelegate.swift */,
+				0607AFFC2C6DF3CA00887951 /* ARGrowingTextView.swift */,
+				0607B0002C6DF3CF00887951 /* ARTextViewInternal.swift */,
+				0607B0022C6DF3D100887951 /* ARTextViewInternalTextStyle.swift */,
+				0607B0052C6DF80700887951 /* NSItemProvider+Extension.swift */,
+				0607B0072C6DF88800887951 /* String+TypeIdentifiers.swift */,
+				0614EED42C6F72EF00444D29 /* ARAnimationContext.swift */,
+				0614EED22C6F72E300444D29 /* NSAttributedString+Extension.swift */,
+				0614EED02C6F72D700444D29 /* UIPasteboard+Extension.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		06419FC2299B78F500980935 = {
+			isa = PBXGroup;
+			children = (
+				06419FCE299B78F500980935 /* ARGrowingTextView */,
+				06419FCD299B78F500980935 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		06419FCD299B78F500980935 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06419FCC299B78F500980935 /* ARGrowingTextView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06419FCE299B78F500980935 /* ARGrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				06419FCF299B78F500980935 /* ARGrowingTextView.h */,
+				0607B0042C6DF3DA00887951 /* Source */,
+				06419FD0299B78F500980935 /* ARGrowingTextView.docc */,
+			);
+			path = ARGrowingTextView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		06419FC7299B78F500980935 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06419FD2299B78F500980935 /* ARGrowingTextView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		06419FCB299B78F500980935 /* ARGrowingTextView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06419FD5299B78F500980935 /* Build configuration list for PBXNativeTarget "ARGrowingTextView" */;
+			buildPhases = (
+				06419FC7299B78F500980935 /* Headers */,
+				06419FC8299B78F500980935 /* Sources */,
+				06419FC9299B78F500980935 /* Frameworks */,
+				06419FCA299B78F500980935 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARGrowingTextView;
+			packageProductDependencies = (
+				0614EED72C6F73DF00444D29 /* ARMarkdownTextStorage */,
+			);
+			productName = ARGrowingTextView;
+			productReference = 06419FCC299B78F500980935 /* ARGrowingTextView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06419FC3299B78F500980935 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					06419FCB299B78F500980935 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 06419FC6299B78F500980935 /* Build configuration list for PBXProject "ARGrowingTextView" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06419FC2299B78F500980935;
+			packageReferences = (
+				0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */,
+			);
+			productRefGroup = 06419FCD299B78F500980935 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06419FCB299B78F500980935 /* ARGrowingTextView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06419FCA299B78F500980935 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06419FC8299B78F500980935 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0614EED32C6F72E300444D29 /* NSAttributedString+Extension.swift in Sources */,
+				0607B0062C6DF80700887951 /* NSItemProvider+Extension.swift in Sources */,
+				0607AFFD2C6DF3CA00887951 /* ARGrowingTextView.swift in Sources */,
+				0614EED52C6F72EF00444D29 /* ARAnimationContext.swift in Sources */,
+				0614EED12C6F72D700444D29 /* UIPasteboard+Extension.swift in Sources */,
+				0607B0032C6DF3D100887951 /* ARTextViewInternalTextStyle.swift in Sources */,
+				06419FD1299B78F500980935 /* ARGrowingTextView.docc in Sources */,
+				0607AFFF2C6DF3CD00887951 /* ARGrowingTextViewDelegate.swift in Sources */,
+				0607B0082C6DF88800887951 /* String+TypeIdentifiers.swift in Sources */,
+				0607B0012C6DF3CF00887951 /* ARTextViewInternal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		06419FD3299B78F500980935 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		06419FD4299B78F500980935 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		06419FD6299B78F500980935 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HNZG8PLWWM;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.arealidea.ARGrowingTextView;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06419FD7299B78F500980935 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HNZG8PLWWM;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.arealidea.ARGrowingTextView;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06419FC6299B78F500980935 /* Build configuration list for PBXProject "ARGrowingTextView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06419FD3299B78F500980935 /* Debug */,
+				06419FD4299B78F500980935 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06419FD5299B78F500980935 /* Build configuration list for PBXNativeTarget "ARGrowingTextView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06419FD6299B78F500980935 /* Debug */,
+				06419FD7299B78F500980935 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppleArealidea/ARMarkdownTextStorage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0614EED72C6F73DF00444D29 /* ARMarkdownTextStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */;
+			productName = ARMarkdownTextStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 06419FC3299B78F500980935 /* Project object */;
+}
