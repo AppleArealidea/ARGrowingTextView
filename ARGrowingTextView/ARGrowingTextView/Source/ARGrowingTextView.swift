@@ -9,13 +9,17 @@ import Foundation
 import UIKit
 import ARMarkdownTextStorage
 
-public class ARGrowingTextView: UIView {
+open class ARGrowingTextView: UIView {
     public weak var delegate: ARGrowingTextViewDelegate?
     
     // MARK: Views
     public private(set) var internalTextView = ARTextViewInternalTextStyle(frame: .zero)
     // Constraints
     private var textViewHeightConstraint: NSLayoutConstraint!
+    private var textViewTopConstraint: NSLayoutConstraint!
+    private var textViewBottomConstraint: NSLayoutConstraint!
+    private var textViewLeadingConstraint: NSLayoutConstraint!
+    private var textViewTrailingConstraint: NSLayoutConstraint!
     
     // MARK: Properties
     private var sizeConfig = SizeConfig(minHeight: 0, maxHeight: 0, minNumberOfLines: 1, maxNumberOfLines: 3)
@@ -126,11 +130,11 @@ public class ARGrowingTextView: UIView {
     }
     public var contentInset: UIEdgeInsets = .zero {
         didSet {
-            var textViewFrame = frame
-            textViewFrame.origin = CGPoint(x: contentInset.left, y: contentInset.top - contentInset.bottom)
-            textViewFrame.size.width = textViewFrame.width - (contentInset.left + contentInset.right)
-            
-            internalTextView.frame = textViewFrame
+            textViewTopConstraint?.constant = contentInset.top
+            textViewLeadingConstraint?.constant = contentInset.left
+            textViewTrailingConstraint.constant = contentInset.right
+            textViewBottomConstraint?.constant = contentInset.bottom
+            layoutIfNeeded()
             
             recalculateMinAndMaxHeights()
         }
@@ -163,13 +167,18 @@ public class ARGrowingTextView: UIView {
     
     // MARK: Initialization
     // having initwithcoder allows us to use HPGrowingTextView in a Nib. -- aob, 9/2011
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInitialiser()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInitialiser()
+    }
+    
+    public init() {
+        super.init(frame: .zero)
         commonInitialiser()
     }
     
@@ -186,16 +195,22 @@ public class ARGrowingTextView: UIView {
         addSubview(internalTextView)
         
         internalTextView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            internalTextView.topAnchor.constraint(equalTo: topAnchor),
-            internalTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            internalTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            internalTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
         
         let height = internalTextView.sizeThatFits(internalTextView.frame.size).height
+        
+        textViewTopConstraint = internalTextView.topAnchor.constraint(equalTo: topAnchor)
+        textViewLeadingConstraint = internalTextView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        textViewTrailingConstraint = trailingAnchor.constraint(equalTo: internalTextView.trailingAnchor)
+        textViewBottomConstraint = bottomAnchor.constraint(equalTo: internalTextView.bottomAnchor)
         textViewHeightConstraint = internalTextView.heightAnchor.constraint(equalToConstant: height)
-        textViewHeightConstraint.isActive = true
+        
+        NSLayoutConstraint.activate([
+            textViewTopConstraint,
+            textViewLeadingConstraint,
+            textViewTrailingConstraint,
+            textViewBottomConstraint,
+            textViewHeightConstraint
+        ])
         
         sizeConfig.minHeight = height
         
