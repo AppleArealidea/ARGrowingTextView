@@ -62,28 +62,6 @@ open class ARGrowingTextView: UIView {
     public var animateHeightChange = true
     public var animationDuration: TimeInterval = 0.1
     
-    public var placeholder: String? {
-        get { internalTextView.placeholder }
-        set {
-            internalTextView.placeholder = newValue
-            internalTextView.setNeedsDisplay()
-        }
-    }
-    
-    public var placeholderColor: UIColor? {
-        get { internalTextView.placeholderColor }
-        set { internalTextView.placeholderColor = newValue }
-    }
-    
-    public override var backgroundColor: UIColor? {
-        get { internalTextView.backgroundColor }
-        set {
-            super.backgroundColor = newValue
-            internalTextView.backgroundColor = newValue
-        }
-    }
-    
-    // uitextview properties
     public var text: String? {
         get { internalTextView.text }
         set {
@@ -100,34 +78,23 @@ open class ARGrowingTextView: UIView {
             recalculateMinAndMaxHeights()
         }
     }
-    public var textColor: UIColor? {
-        get { internalTextView.textColor }
-        set { internalTextView.textColor = newValue }
+    
+    public var placeholder: String? {
+        get { internalTextView.placeholder }
+        set {
+            internalTextView.placeholder = newValue
+            internalTextView.setNeedsDisplay()
+        }
     }
-    public var textAlignment: NSTextAlignment {
-        get { internalTextView.textAlignment }
-        set { internalTextView.textAlignment = newValue }
+    
+    public override var backgroundColor: UIColor? {
+        get { internalTextView.backgroundColor }
+        set {
+            super.backgroundColor = newValue
+            internalTextView.backgroundColor = newValue
+        }
     }
-    public var selectedRange: NSRange {// only ranges of length 0 are supported
-        get { internalTextView.selectedRange }
-        set { internalTextView.selectedRange = newValue }
-    }
-    public var editable: Bool {
-        get { internalTextView.isEditable }
-        set { internalTextView.isEditable = newValue }
-    }
-    public var dataDetectorTypes: UIDataDetectorTypes {
-        get { internalTextView.dataDetectorTypes }
-        set { internalTextView.dataDetectorTypes = newValue }
-    }
-    public var returnKeyType: UIReturnKeyType {
-        get { internalTextView.returnKeyType }
-        set { internalTextView.returnKeyType = newValue }
-    }
-    public var keyboardType: UIKeyboardType {
-        get { internalTextView.keyboardType }
-        set { internalTextView.keyboardType = newValue }
-    }
+    
     public var contentInset: UIEdgeInsets = .zero {
         didSet {
             textViewTopConstraint?.constant = contentInset.top
@@ -138,31 +105,6 @@ open class ARGrowingTextView: UIView {
             
             recalculateMinAndMaxHeights()
         }
-    }
-    public var scrollIndicatorInsets: UIEdgeInsets {
-        get {
-            internalTextView.scrollIndicatorInsets
-        }
-        set {
-            internalTextView.scrollIndicatorInsets = newValue
-        }
-    }
-    
-    public var isScrollable: Bool {
-        get { internalTextView.isScrollEnabled }
-        set { internalTextView.isScrollEnabled = newValue }
-    }
-    public var enablesReturnKeyAutomatically: Bool {
-        get { internalTextView.enablesReturnKeyAutomatically }
-        set { internalTextView.enablesReturnKeyAutomatically = newValue }
-    }
-    
-    public override var isFirstResponder: Bool {
-        internalTextView.isFirstResponder
-    }
-    
-    public var hasText: Bool {
-        internalTextView.hasText
     }
     
     // MARK: Initialization
@@ -214,12 +156,12 @@ open class ARGrowingTextView: UIView {
         
         sizeConfig.minHeight = height
         
-        internalTextView.text = ""
+        text = ""
         
         recalculateMinAndMaxHeights()
         
         placeholderColor = .lightGray
-        internalTextView.displayPlaceHolder = true
+        displayPlaceHolder = true
         
         addNotificationsObserver()
     }
@@ -240,7 +182,7 @@ open class ARGrowingTextView: UIView {
         internalTextView.showsHorizontalScrollIndicator = false
         internalTextView.text = "-"
         internalTextView.contentMode = .redraw
-        internalTextView.placeholder = "ArealIdea"
+        internalTextView.placeholder = "Areal"
     }
 
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -279,6 +221,7 @@ open class ARGrowingTextView: UIView {
     
     // uitextview methods
     // need others? use .internalTextView
+    @discardableResult
     public override func becomeFirstResponder() -> Bool {
         super.becomeFirstResponder()
         return internalTextView.becomeFirstResponder()
