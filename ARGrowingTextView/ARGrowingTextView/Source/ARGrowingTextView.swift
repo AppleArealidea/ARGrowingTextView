@@ -129,9 +129,23 @@ open class ARGrowingTextView: UIView {
         commonInitialiser(textContainer: textContainer)
     }
     
-    private func commonInitialiser(textContainer: NSTextContainer? = nil) {
+    private func commonInitialiser() {
+        // Create default text container
+        let container = NSTextContainer(size: .zero)
+        container.widthTracksTextView = true
+        
+        let layoutManager = NSLayoutManager()
+        layoutManager.addTextContainer(container)
+        
+        let textStorage = MarkdownTextStorage(font: .systemFont(ofSize: 17))
+        textStorage.addLayoutManager(layoutManager)
+        
+        commonInitialiser(textContainer: container)
+    }
+    
+    private func commonInitialiser(textContainer: NSTextContainer) {
         // Initialization code
-        textStorage = textContainer?.layoutManager?.textStorage
+        textStorage = textContainer.layoutManager?.textStorage
         
         initInternalTextView(textContainer: textContainer)
         addSubview(internalTextView)
