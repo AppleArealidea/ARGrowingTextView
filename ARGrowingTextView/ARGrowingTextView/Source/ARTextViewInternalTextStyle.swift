@@ -285,7 +285,7 @@ extension ARTextViewInternalTextStyle {
     public override func copy(_ sender: Any?) {
         let selectedRange = selectedRange
         let selectedText = attributedText.attributedSubstring(from: selectedRange)
-        let str = MarkdownParser.attributedString(fromMardown: selectedText.string, font: .preferredFont(forTextStyle: .body), color: .black).attributedString
+        let str = MarkdownParser.attributedString(fromMarkdown: selectedText.string, font: .preferredFont(forTextStyle: .body), color: .black).attributedString
         UIPasteboard.general.setAttributedString(str)
     }
     
