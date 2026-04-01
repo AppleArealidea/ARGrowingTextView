@@ -14,5 +14,3 @@ FOUNDATION_EXPORT double ARGrowingTextViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char ARGrowingTextViewVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ARGrowingTextView/PublicHeader.h>
-
-@end

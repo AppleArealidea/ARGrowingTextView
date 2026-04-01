@@ -143,7 +143,12 @@ extension ARTextViewInternalTextStyle: UITextPasteDelegate {
         findAttributedSubstring(sourceString: parsedStr, attribute: .font) { [weak self] (attribute, range) -> (Int) in
             guard let self = self else {return 0}
             if let font = attribute as? UIFont {
-                if font.isItalic {
+                if font.isBold && font.isItalic {
+                    let boldSymbolLen = MarkdownStyle.bold.symbol().count
+                    _ = self.markdownText(parsedStr, in: range, with: .bold)
+                    let innerRange = NSRange(location: range.location + boldSymbolLen, length: range.length)
+                    return self.markdownText(parsedStr, in: innerRange, with: .italic)
+                } else if font.isItalic {
                     return self.markdownText(parsedStr, in: range, with: .italic)
                 } else if font.isBold {
                     return self.markdownText(parsedStr, in: range, with: .bold)

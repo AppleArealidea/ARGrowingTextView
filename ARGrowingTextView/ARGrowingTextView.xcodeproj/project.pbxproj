@@ -16,6 +16,7 @@
 		0614EED12C6F72D700444D29 /* UIPasteboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0614EED02C6F72D700444D29 /* UIPasteboard+Extension.swift */; };
 		0614EED32C6F72E300444D29 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0614EED22C6F72E300444D29 /* NSAttributedString+Extension.swift */; };
 		0614EED52C6F72EF00444D29 /* ARAnimationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0614EED42C6F72EF00444D29 /* ARAnimationContext.swift */; };
+		06F1A0022DA0000100887951 /* ARGrowingTextView+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F1A0012DA0000100887951 /* ARGrowingTextView+Properties.swift */; };
 		0614EED82C6F73DF00444D29 /* ARMarkdownTextStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0614EED72C6F73DF00444D29 /* ARMarkdownTextStorage */; };
 		06419FD1299B78F500980935 /* ARGrowingTextView.docc in Sources */ = {isa = PBXBuildFile; fileRef = 06419FD0299B78F500980935 /* ARGrowingTextView.docc */; };
 		06419FD2299B78F500980935 /* ARGrowingTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06419FCF299B78F500980935 /* ARGrowingTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,6 +32,7 @@
 		0614EED02C6F72D700444D29 /* UIPasteboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Extension.swift"; sourceTree = "<group>"; };
 		0614EED22C6F72E300444D29 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		0614EED42C6F72EF00444D29 /* ARAnimationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAnimationContext.swift; sourceTree = "<group>"; };
+		06F1A0012DA0000100887951 /* ARGrowingTextView+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARGrowingTextView+Properties.swift"; sourceTree = "<group>"; };
 		06419FCC299B78F500980935 /* ARGrowingTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARGrowingTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06419FCF299B78F500980935 /* ARGrowingTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARGrowingTextView.h; sourceTree = "<group>"; };
 		06419FD0299B78F500980935 /* ARGrowingTextView.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ARGrowingTextView.docc; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				0607AFFE2C6DF3CD00887951 /* ARGrowingTextViewDelegate.swift */,
 				0607AFFC2C6DF3CA00887951 /* ARGrowingTextView.swift */,
+				06F1A0012DA0000100887951 /* ARGrowingTextView+Properties.swift */,
 				0607B0002C6DF3CF00887951 /* ARTextViewInternal.swift */,
 				0607B0022C6DF3D100887951 /* ARTextViewInternalTextStyle.swift */,
 				0607B0052C6DF80700887951 /* NSItemProvider+Extension.swift */,
@@ -178,6 +181,7 @@
 				0614EED32C6F72E300444D29 /* NSAttributedString+Extension.swift in Sources */,
 				0607B0062C6DF80700887951 /* NSItemProvider+Extension.swift in Sources */,
 				0607AFFD2C6DF3CA00887951 /* ARGrowingTextView.swift in Sources */,
+				06F1A0022DA0000100887951 /* ARGrowingTextView+Properties.swift in Sources */,
 				0614EED52C6F72EF00444D29 /* ARAnimationContext.swift in Sources */,
 				0614EED12C6F72D700444D29 /* UIPasteboard+Extension.swift in Sources */,
 				0607B0032C6DF3D100887951 /* ARTextViewInternalTextStyle.swift in Sources */,
