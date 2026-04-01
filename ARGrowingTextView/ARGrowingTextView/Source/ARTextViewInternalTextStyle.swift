@@ -243,8 +243,35 @@ extension ARTextViewInternalTextStyle {
     }
     
     // MARK: - UIMenu
+    @available(iOS 16.0, *)
+    public override func editMenu(for textRange: UITextRange, suggestedActions: [UIMenuElement]) -> UIMenu? {
+        let title = NSLocalizedString("ARTextViewInternalTextStyle.strikethroughActionTitle", tableName: nil, bundle: .module, value: "Strikethrough", comment: "")
+        let strikethrough = UIAction(title: title) { [weak self] _ in
+            self?.didSelectStyle(.strikethrough)
+        }
+        let actions = suggestedActions.map { element -> UIMenuElement in
+            guard let menu = element as? UIMenu else { return element }
+            return Self.insertingAction(strikethrough, intoFormatMenu: menu)
+        }
+        return UIMenu(children: actions)
+    }
+    
+    @available(iOS 16.0, *)
+    private static func insertingAction(_ action: UIAction, intoFormatMenu menu: UIMenu) -> UIMenu {
+        if menu.identifier == .textStyle || menu.identifier == .format {
+            return menu.replacingChildren(menu.children + [action])
+        }
+        let updatedChildren = menu.children.map { child -> UIMenuElement in
+            guard let submenu = child as? UIMenu else { return child }
+            return insertingAction(action, intoFormatMenu: submenu)
+        }
+        return menu.replacingChildren(updatedChildren)
+    }
+    
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        customStyleMenu()
+        if #unavailable(iOS 16) {
+            customStyleMenu()
+        }
         
         guard EnabledMenuSelectors.contains(action) else {
             return false
@@ -267,12 +294,20 @@ extension ARTextViewInternalTextStyle {
     
     private func customStyleMenu() {
         let menuController = UIMenuController.shared
-        if var menuItems = menuController.menuItems,
-           (menuItems.map { $0.action }).elementsEqual([EnabledMenuSelectors.toggleBoldface, EnabledMenuSelectors.toggleItalics, EnabledMenuSelectors.toggleUnderline]) {
-            // The font style menu is about to become visible
-            // Add a new menu item for strikethrough style
-            menuItems.append(UIMenuItem(title: NSLocalizedString("ARTextViewInternalTextStyle.strikethroughActionTitle", comment: ""),
-                                        action: EnabledMenuSelectors.toggleStrikethrough))
+        guard var menuItems = menuController.menuItems else { return }
+        
+        let formatSelectors: Set<Selector> = [
+            EnabledMenuSelectors.toggleBoldface,
+            EnabledMenuSelectors.toggleItalics,
+            EnabledMenuSelectors.toggleUnderline
+        ]
+        let currentActions = Set(menuItems.map { $0.action })
+        let isFormatMenuVisible = !formatSelectors.isDisjoint(with: currentActions)
+        let alreadyHasStrikethrough = currentActions.contains(EnabledMenuSelectors.toggleStrikethrough)
+        
+        if isFormatMenuVisible && !alreadyHasStrikethrough {
+            let title = NSLocalizedString("ARTextViewInternalTextStyle.strikethroughActionTitle", tableName: nil, bundle: .module, value: "Strikethrough", comment: "")
+            menuItems.append(UIMenuItem(title: title, action: EnabledMenuSelectors.toggleStrikethrough))
             menuController.menuItems = menuItems
         }
     }

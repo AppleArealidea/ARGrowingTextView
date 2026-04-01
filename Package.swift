@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "ARGrowingTextView",
+    defaultLocalization: "en",
     platforms: [.iOS(.v13)],
     products: [
         .library(
@@ -18,6 +19,10 @@ let package = Package(
             name: "ARGrowingTextView",
             dependencies: ["ARMarkdownTextStorage"],
             path: "ARGrowingTextView/ARGrowingTextView/Source",
+            resources: [
+                .process("en.lproj"),
+                .process("ru.lproj")
+            ],
             publicHeadersPath: "./",
             cSettings: [
                 .headerSearchPath("./")

@@ -20,6 +20,7 @@
 		0614EED82C6F73DF00444D29 /* ARMarkdownTextStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0614EED72C6F73DF00444D29 /* ARMarkdownTextStorage */; };
 		06419FD1299B78F500980935 /* ARGrowingTextView.docc in Sources */ = {isa = PBXBuildFile; fileRef = 06419FD0299B78F500980935 /* ARGrowingTextView.docc */; };
 		06419FD2299B78F500980935 /* ARGrowingTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06419FCF299B78F500980935 /* ARGrowingTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06F1A0032DA1000100887951 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06F1A0062DA1000100887951 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		06419FCC299B78F500980935 /* ARGrowingTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARGrowingTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06419FCF299B78F500980935 /* ARGrowingTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARGrowingTextView.h; sourceTree = "<group>"; };
 		06419FD0299B78F500980935 /* ARGrowingTextView.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ARGrowingTextView.docc; sourceTree = "<group>"; };
+		06F1A0042DA1000100887951 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Source/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06F1A0052DA1000100887951 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Source/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 			children = (
 				06419FCF299B78F500980935 /* ARGrowingTextView.h */,
 				0607B0042C6DF3DA00887951 /* Source */,
+				06F1A0062DA1000100887951 /* Localizable.strings */,
 				06419FD0299B78F500980935 /* ARGrowingTextView.docc */,
 			);
 			path = ARGrowingTextView;
@@ -148,6 +152,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 				Base,
 			);
 			mainGroup = 06419FC2299B78F500980935;
@@ -168,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F1A0032DA1000100887951 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +410,18 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin PBXVariantGroup section */
+		06F1A0062DA1000100887951 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06F1A0042DA1000100887951 /* en */,
+				06F1A0052DA1000100887951 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */ = {
