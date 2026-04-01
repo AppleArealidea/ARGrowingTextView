@@ -362,7 +362,7 @@ open class ARGrowingTextView: UIView {
     private func calculateCurrentTextViewHeight() -> CGFloat {
         var newSizeH = measureHeight()
         if newSizeH < minHeight || !internalTextView.hasText {
-            newSizeH = minHeight // not smalles than minHeight
+            newSizeH = minHeight // not smaller than minHeight
         } else if maxHeight > 0 && newSizeH > maxHeight {
             newSizeH = maxHeight // not taller than maxHeight
         }
