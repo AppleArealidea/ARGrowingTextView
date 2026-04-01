@@ -71,7 +71,7 @@ public class ARTextViewInternal: UITextView {
     public override var contentSize: CGSize {
         get { super.contentSize }
         set {
-            if contentSize.height > newValue.height { // is this an iOS5 bug? Need testing!
+            if contentSize.height > newValue.height {
                 var insets = contentInset
                 insets.bottom = 0
                 insets.top = 0
