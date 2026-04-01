@@ -134,6 +134,15 @@ textView.internalTextView.autocorrectionType = .no
 | `growingTextViewShouldReturn(_:)` | Return key tapped — return `true` to resign first responder |
 | `userDidPaste(images:)` | User pasted images from the pasteboard |
 
+## Acknowledgments
+
+ARGrowingTextView is inspired by [HPGrowingTextView](https://github.com/HansPinckaers/GrowingTextView) 
+by Hans Pinckaers — a pioneering Objective-C library (2011, 2000+ stars) that introduced the concept 
+of an auto-growing UITextView for iOS. The original project has been archived since 2019.
+
+ARGrowingTextView is a modern reimagining in Swift, adding Markdown support, smart paste/copy, 
+style menus, image handling, Dynamic Type, and full Auto Layout integration.
+
 ## License
 
 [MIT](LICENSE) © 2023 Areal
