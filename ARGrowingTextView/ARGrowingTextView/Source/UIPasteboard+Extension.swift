@@ -8,15 +8,26 @@
 import Foundation
 import UIKit
 import CoreServices
+import UniformTypeIdentifiers
 
 extension UIPasteboard {
     func setAttributedString(_ attributedString: NSAttributedString) {
         var item = [String: Any]()
         if let rtf = getRtf(from: attributedString) {
-            item[kUTTypeRTF as String] = rtf
+            item[rtfType] = rtf
         }
-        item[kUTTypePlainText as String] = attributedString.string
+        item[plainTextType] = attributedString.string
         items = [item]
+    }
+    
+    private var rtfType: String {
+        if #available(iOS 14.0, *) { return UTType.rtf.identifier }
+        return kUTTypeRTF as String
+    }
+    
+    private var plainTextType: String {
+        if #available(iOS 14.0, *) { return UTType.plainText.identifier }
+        return kUTTypePlainText as String
     }
     
     private func getRtf(from attributedString: NSAttributedString) -> Data? {

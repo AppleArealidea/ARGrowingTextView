@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import MobileCoreServices
+import CoreServices
 import UniformTypeIdentifiers
 
 extension String {
