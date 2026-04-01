@@ -175,6 +175,12 @@ open class ARGrowingTextView: UIView {
         displayPlaceHolder = true
         
         addNotificationsObserver()
+        
+        if #available(iOS 17.0, *) {
+            registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (self: ARGrowingTextView, _) in
+                self.updateLayout(for: self.traitCollection.preferredContentSizeCategory)
+            }
+        }
     }
     
     deinit {
@@ -459,8 +465,11 @@ extension ARGrowingTextView {
         internalTextView.font = font
     }
     
+    @available(iOS, deprecated: 17.0, message: "Use registerForTraitChanges instead")
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        updateLayout(for: traitCollection.preferredContentSizeCategory)
+        if #unavailable(iOS 17) {
+            updateLayout(for: traitCollection.preferredContentSizeCategory)
+        }
     }
 }
