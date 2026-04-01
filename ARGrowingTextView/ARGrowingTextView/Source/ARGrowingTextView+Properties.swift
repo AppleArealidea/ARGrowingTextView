@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ARGrowingTextView+Properties.swift
 //  ARGrowingTextView
 //
 //  Created by Семён Осипов on 04.02.2025.

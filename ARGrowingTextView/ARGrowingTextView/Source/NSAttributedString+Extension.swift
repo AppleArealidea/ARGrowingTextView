@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NSAttributedString+Extension.swift
 //  
 //
 //  Created by Семён C. Осипов on 16.08.2024.
