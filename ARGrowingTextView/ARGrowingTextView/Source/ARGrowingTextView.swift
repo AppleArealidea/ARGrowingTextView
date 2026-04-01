@@ -107,7 +107,8 @@ open class ARGrowingTextView: UIView {
     }
     
     // MARK: Initialization
-    // having initwithcoder allows us to use HPGrowingTextView in a Nib. -- aob, 9/2011
+    // Originally from HPGrowingTextView (Hans Pinckaers, 2011).
+    // init(coder:) is required for Interface Builder / Storyboard usage.
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInitialiser()
