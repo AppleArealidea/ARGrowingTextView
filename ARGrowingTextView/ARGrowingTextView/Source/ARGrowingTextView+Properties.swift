@@ -70,10 +70,6 @@ public extension ARGrowingTextView {
         set { internalTextView.horizontalScrollIndicatorInsets = newValue}
     }
     
-    var isScrollable: Bool {
-        get { internalTextView.isScrollEnabled }
-        set { internalTextView.isScrollEnabled = newValue }
-    }
     var enablesReturnKeyAutomatically: Bool {
         get { internalTextView.enablesReturnKeyAutomatically }
         set { internalTextView.enablesReturnKeyAutomatically = newValue }
