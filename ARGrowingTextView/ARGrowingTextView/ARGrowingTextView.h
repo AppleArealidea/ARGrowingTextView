@@ -2,7 +2,7 @@
 //  ARGrowingTextView.h
 //  ARGrowingTextView
 //
-//  Created by Семён C. Осипов on 14.02.2023.
+//  Created by Semen Osipov on 14.02.2023.
 //
 
 #import <Foundation/Foundation.h>

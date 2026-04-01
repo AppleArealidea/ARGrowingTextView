@@ -2,7 +2,7 @@
 //  ARGrowingTextView+Properties.swift
 //  ARGrowingTextView
 //
-//  Created by Семён Осипов on 04.02.2025.
+//  Created by Semen Osipov on 04.02.2025.
 //
 
 import Foundation

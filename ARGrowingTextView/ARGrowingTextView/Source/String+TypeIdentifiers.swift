@@ -2,7 +2,7 @@
 //  String+TypeIdentifiers.swift
 //  ARGrowingTextView
 //
-//  Created by Семён C. Осипов on 15.08.2024.
+//  Created by Semen Osipov on 15.08.2024.
 //
 
 import Foundation
