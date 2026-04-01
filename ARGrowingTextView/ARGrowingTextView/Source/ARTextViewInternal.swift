@@ -90,10 +90,12 @@ public class ARTextViewInternal: UITextView {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = textAlignment
             
-            let drawRect = CGRect(x: 5,
-                                  y: 8 + contentInset.top,
-                                  width: frame.width - contentInset.left,
-                                  height: frame.height - contentInset.top)
+            let x = textContainer.lineFragmentPadding + textContainerInset.left
+            let y = textContainerInset.top
+            let drawRect = CGRect(x: x,
+                                  y: y,
+                                  width: frame.width - x - textContainerInset.right,
+                                  height: frame.height - y - textContainerInset.bottom)
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: font,
                 .foregroundColor: placeholderColor,
