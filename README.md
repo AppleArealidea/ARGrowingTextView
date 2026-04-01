@@ -134,6 +134,71 @@ textView.internalTextView.autocorrectionType = .no
 | `growingTextViewShouldReturn(_:)` | Return key tapped — return `true` to resign first responder |
 | `userDidPaste(images:)` | User pasted images from the pasteboard |
 
+## Migrating from HPGrowingTextView
+
+ARGrowingTextView preserves the same architectural approach (a `UIView` wrapping an internal `UITextView`) and keeps familiar API names, so migration is mostly mechanical.
+
+### What stays the same
+
+| HPGrowingTextView (Obj-C) | ARGrowingTextView (Swift) |
+|---|---|
+| `maxNumberOfLines` / `minNumberOfLines` | `maxNumberOfLines` / `minNumberOfLines` |
+| `maxHeight` / `minHeight` | `maxHeight` / `minHeight` |
+| `animateHeightChange` | `animateHeightChange` |
+| `animationDuration` | `animationDuration` |
+| `.internalTextView` | `.internalTextView` |
+| `text`, `font`, `textColor`, `textAlignment`, `selectedRange`, `editable`, `dataDetectorTypes`, `returnKeyType` | Same — proxied directly |
+| All `growingTextView…` delegate methods | Same names, Swift syntax |
+
+### What changed
+
+| Change | Details |
+|---|---|
+| **Language** | Objective-C → Swift 5.10+ |
+| **Min deployment** | iOS 4+ → iOS 13+ |
+| **Installation** | CocoaPods → Swift Package Manager |
+| **Layout** | Frame-based → Auto Layout (add as subview and pin with constraints) |
+| **Height animation callback** | `willChangeHeight:` was called *inside* the animation block. Now use `changeHeightWith:animationContext:` and call `animationContext.animate { … }` to synchronize your layout changes. |
+| **Delegate protocol** | `HPGrowingTextViewDelegate` → `ARGrowingTextViewDelegate` |
+
+### What's new
+
+- **Markdown** — live bold, italic, strikethrough, and underline rendering via `MarkdownTextStorage`
+- **Smart paste / copy** — RTF, HTML, and URL paste converted to Markdown; copy preserves formatting
+- **Style menu** — context menu actions (Bold, Italic, Underline, Strikethrough) on selected text
+- **Image paste** — `userDidPaste(images:)` delegate callback
+- **Placeholder** — built-in placeholder label with customizable color
+- **Dynamic Type** — automatic font updates on `UIContentSizeCategory` changes
+
+### Quick example
+
+```diff
+- #import "HPGrowingTextView.h"
++ import ARGrowingTextView
+
+- HPGrowingTextView *textView = [[HPGrowingTextView alloc] initWithFrame:rect];
+- textView.minNumberOfLines = 1;
+- textView.maxNumberOfLines = 5;
++ let textView = ARGrowingTextView()
++ textView.minNumberOfLines = 1
++ textView.maxNumberOfLines = 5
+
+  // Height animation
+- - (void)growingTextView:(HPGrowingTextView *)gTV willChangeHeight:(float)height {
+-     [UIView animateWithDuration:0.1 animations:^{
+-         // adjust layout
+-     }];
+- }
++ func growingTextView(_ growingTextView: ARGrowingTextView,
++                      changeHeightWith diff: CGFloat,
++                      animationContext: ARAnimationContext) {
++     animationContext.animate {
++         self.bottomConstraint.constant += diff
++         self.view.layoutIfNeeded()
++     }
++ }
+```
+
 ## Acknowledgments
 
 ARGrowingTextView is inspired by [HPGrowingTextView](https://github.com/HansPinckaers/GrowingTextView) 
