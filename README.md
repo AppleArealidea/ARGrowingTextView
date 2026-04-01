@@ -9,6 +9,10 @@ Auto-growing multi-line `UITextView` with built-in Markdown support. Similar to 
 
 Powered by [ARMarkdownTextStorage](https://github.com/AppleArealidea/ARMarkdownTextStorage) for real-time Markdown rendering.
 
+<p align="center">
+  <img src="Resources/demo.png" alt="ARGrowingTextView demo — 1 line, 3 lines, 6 lines max" width="600">
+</p>
+
 ## Features
 
 - **Auto-resizing** — height grows and shrinks with content, constrained by min/max lines or explicit point values
