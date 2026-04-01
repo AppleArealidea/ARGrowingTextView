@@ -100,7 +100,9 @@ extension ARTextViewInternalTextStyle: UITextPasteDelegate {
                     item.setResult(attributedString: parsedStr ?? str)
                 }
                 if let error = error {
+                    #if DEBUG
                     print(error)
+                    #endif
                     item.setNoResult()
                 }
             }
@@ -112,7 +114,9 @@ extension ARTextViewInternalTextStyle: UITextPasteDelegate {
                     item.setResult(attributedString: parsedStr ?? str)
                 }
                 if let error = error {
+                    #if DEBUG
                     print(error)
+                    #endif
                     item.setNoResult()
                 }
             }
@@ -140,8 +144,7 @@ extension ARTextViewInternalTextStyle: UITextPasteDelegate {
             }
         }
         
-        findAttributedSubstring(sourceString: parsedStr, attribute: .font) { [weak self] (attribute, range) -> (Int) in
-            guard let self = self else {return 0}
+        findAttributedSubstring(sourceString: parsedStr, attribute: .font) { (attribute, range) -> (Int) in
             if let font = attribute as? UIFont {
                 if font.isBold && font.isItalic {
                     let boldSymbolLen = MarkdownStyle.bold.symbol().count
@@ -160,8 +163,7 @@ extension ARTextViewInternalTextStyle: UITextPasteDelegate {
             }
         }
         
-        findAttributedSubstring(sourceString: parsedStr, attribute: .underlineStyle) { [weak self] (attribute, range) -> (Int) in
-            guard let self = self else {return 0}
+        findAttributedSubstring(sourceString: parsedStr, attribute: .underlineStyle) { (attribute, range) -> (Int) in
             if attribute is NSUnderlineStyle.RawValue {
                 return self.markdownText(parsedStr, in: range, with: .underline)
             } else {
@@ -169,8 +171,7 @@ extension ARTextViewInternalTextStyle: UITextPasteDelegate {
             }
         }
         
-        findAttributedSubstring(sourceString: parsedStr, attribute: .strikethroughStyle) { [weak self] (attribute, range) -> (Int) in
-            guard let self = self else {return 0}
+        findAttributedSubstring(sourceString: parsedStr, attribute: .strikethroughStyle) { (attribute, range) -> (Int) in
             if attribute is NSUnderlineStyle.RawValue {
                 return self.markdownText(parsedStr, in: range, with: .strikethrough)
             } else {
@@ -246,7 +247,6 @@ extension ARTextViewInternalTextStyle {
         customStyleMenu()
         
         guard EnabledMenuSelectors.contains(action) else {
-            print("Disabled selector: \(action)")
             return false
         }
         
@@ -271,7 +271,7 @@ extension ARTextViewInternalTextStyle {
            (menuItems.map { $0.action }).elementsEqual([EnabledMenuSelectors.toggleBoldface, EnabledMenuSelectors.toggleItalics, EnabledMenuSelectors.toggleUnderline]) {
             // The font style menu is about to become visible
             // Add a new menu item for strikethrough style
-            menuItems.append(UIMenuItem(title: NSLocalizedString("HPTextViewInternalTextStyle.strikethroughActionTitle", comment: ""),
+            menuItems.append(UIMenuItem(title: NSLocalizedString("ARTextViewInternalTextStyle.strikethroughActionTitle", comment: ""),
                                         action: EnabledMenuSelectors.toggleStrikethrough))
             menuController.menuItems = menuItems
         }

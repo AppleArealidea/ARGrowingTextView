@@ -23,7 +23,6 @@ open class ARGrowingTextView: UIView {
     
     // MARK: Properties
     private var sizeConfig = SizeConfig(minHeight: 0, maxHeight: 0, minNumberOfLines: 1, maxNumberOfLines: 3)
-    private var textStorage: NSTextStorage?
     
     public var maxNumberOfLines: Int {
         get { sizeConfig.maxNumberOfLines }
@@ -145,8 +144,6 @@ open class ARGrowingTextView: UIView {
     
     private func commonInitialiser(textContainer: NSTextContainer) {
         // Initialization code
-        textStorage = textContainer.layoutManager?.textStorage
-        
         initInternalTextView(textContainer: textContainer)
         addSubview(internalTextView)
         
@@ -196,7 +193,6 @@ open class ARGrowingTextView: UIView {
         internalTextView.showsHorizontalScrollIndicator = false
         internalTextView.text = "-"
         internalTextView.contentMode = .redraw
-        internalTextView.placeholder = "Areal"
     }
 
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -220,7 +216,7 @@ open class ARGrowingTextView: UIView {
         layoutIfNeeded()
     }
     
-    @objc private func resetScrollPositionForIOS7() {
+    @objc private func resetScrollPosition() {
         guard let selectedRange = internalTextView.selectedTextRange else {return}
         let rect = internalTextView.caretRect(for: selectedRange.end)
         let caretY = max(rect.origin.y - internalTextView.frame.height + rect.height + 8, 0)
@@ -299,10 +295,7 @@ open class ARGrowingTextView: UIView {
         if wasDisplayingPlaceholder != internalTextView.displayPlaceHolder {
             internalTextView.setNeedsDisplay()
         }
-        // scroll to caret (needed on iOS7)
-        if responds(to: #selector(snapshotView(afterScreenUpdates:))) {
-            perform(#selector(resetScrollPositionForIOS7), with: nil, afterDelay: 0.1)
-        }
+        perform(#selector(resetScrollPosition), with: nil, afterDelay: 0.1)
         // Tell the delegate that the text view changed
         delegate?.growingTextViewDidChange?(self)
     }
@@ -341,8 +334,8 @@ open class ARGrowingTextView: UIView {
         sizeToFit()
     }
     
-    public override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         recalculateMinAndMaxHeights()
         updateHeightConstraint()
     }

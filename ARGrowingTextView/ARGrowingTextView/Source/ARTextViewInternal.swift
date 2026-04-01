@@ -87,25 +87,19 @@ public class ARTextViewInternal: UITextView {
         if displayPlaceHolder,
            let placeholder = placeholder,
            let placeholderColor = placeholderColor {
-            if responds(to: #selector(snapshotView(afterScreenUpdates:))) {
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.alignment = textAlignment
-                
-                let drawRect = CGRect(x: 5,
-                                      y: 8 + contentInset.top,
-                                      width: frame.width - contentInset.left,
-                                      height: frame.height - contentInset.top)
-                let attributes: [NSAttributedString.Key: Any] = [
-                    .font: font,
-                    .foregroundColor: placeholderColor,
-                    .paragraphStyle: paragraphStyle]
-                
-                (placeholder as NSString).draw(in: drawRect, withAttributes: attributes)
-            } else {
-                placeholderColor.set()
-                let drawRect = CGRect(x: 8, y: 8, width: frame.width - 16, height: frame.height - 16)
-                (placeholder as NSString).draw(in: drawRect, withAttributes: [.font: font])
-            }
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = textAlignment
+            
+            let drawRect = CGRect(x: 5,
+                                  y: 8 + contentInset.top,
+                                  width: frame.width - contentInset.left,
+                                  height: frame.height - contentInset.top)
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: font,
+                .foregroundColor: placeholderColor,
+                .paragraphStyle: paragraphStyle]
+            
+            (placeholder as NSString).draw(in: drawRect, withAttributes: attributes)
         }
     }
 }

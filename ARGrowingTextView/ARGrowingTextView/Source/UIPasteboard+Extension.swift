@@ -25,7 +25,9 @@ extension UIPasteboard {
                                                 documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf])
             return rtf
         } catch {
+            #if DEBUG
             print("Error creating RTF from Attributed String")
+            #endif
             return nil
         }
     }
