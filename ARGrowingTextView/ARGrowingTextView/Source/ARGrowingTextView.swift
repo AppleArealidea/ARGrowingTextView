@@ -177,6 +177,8 @@ open class ARGrowingTextView: UIView {
         
         addNotificationsObserver()
         
+        internalTextView.isScrollEnabled = false
+        
         if #available(iOS 17.0, *) {
             registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (self: ARGrowingTextView, _) in
                 self.updateLayout(for: self.traitCollection.preferredContentSizeCategory)
