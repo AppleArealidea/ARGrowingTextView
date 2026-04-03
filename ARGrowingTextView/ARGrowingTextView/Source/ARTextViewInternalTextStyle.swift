@@ -50,7 +50,7 @@ public class ARTextViewInternalTextStyle: ARTextViewInternal {
     }
     
     private func commonInit() {
-        allowsEditingTextAttributes = true
+        allowsEditingTextAttributes = false
         self.pasteDelegate = self
     }
     
@@ -285,7 +285,7 @@ extension ARTextViewInternalTextStyle {
             EnabledMenuSelectors.toggleItalics,
             EnabledMenuSelectors.toggleUnderline,
             EnabledMenuSelectors.toggleStrikethrough:
-            guard selectedRange.length > 0 else {return false}
+            return selectedRange.length > 0
         default:
             break
         }
