@@ -343,8 +343,8 @@ open class ARGrowingTextView: UIView {
         sizeToFit()
     }
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
+    public override func draw(_ rect: CGRect) {
+        super.draw(rect)
         recalculateMinAndMaxHeights()
         updateHeightConstraint()
     }

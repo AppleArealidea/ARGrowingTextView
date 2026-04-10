@@ -154,7 +154,7 @@
 			);
 			mainGroup = 06419FC2299B78F500980935;
 			packageReferences = (
-				0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */,
+				0614EED62C6F73DF00444D29 /* XCLocalSwiftPackageReference "../../ARMarkdownTextStorage" */,
 			);
 			productRefGroup = 06419FCD299B78F500980935 /* Products */;
 			projectDirPath = "";
@@ -419,21 +419,17 @@
 		};
 /* End PBXVariantGroup section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppleArealidea/ARMarkdownTextStorage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		0614EED62C6F73DF00444D29 /* XCLocalSwiftPackageReference "../../ARMarkdownTextStorage" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../ARMarkdownTextStorage;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		0614EED72C6F73DF00444D29 /* ARMarkdownTextStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0614EED62C6F73DF00444D29 /* XCRemoteSwiftPackageReference "ARMarkdownTextStorage" */;
+			package = 0614EED62C6F73DF00444D29 /* XCLocalSwiftPackageReference "../../ARMarkdownTextStorage" */;
 			productName = ARMarkdownTextStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
