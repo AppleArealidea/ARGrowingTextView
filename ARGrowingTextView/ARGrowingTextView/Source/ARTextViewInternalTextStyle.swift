@@ -245,51 +245,45 @@ extension ARTextViewInternalTextStyle {
     // MARK: - UIMenu
     @available(iOS 16.0, *)
     public override func editMenu(for textRange: UITextRange, suggestedActions: [UIMenuElement]) -> UIMenu? {
+        let hasSelection = selectedRange.length > 0
         let title = NSLocalizedString("ARTextViewInternalTextStyle.strikethroughActionTitle", tableName: nil, bundle: .module, value: "Strikethrough", comment: "")
-        let strikethrough = UIAction(title: title) { [weak self] _ in
+        let strikethrough = UIAction(title: title,
+                                     image: UIImage(systemName: "strikethrough")) { [weak self] _ in
             self?.didSelectStyle(.strikethrough)
         }
-        let actions = suggestedActions.map { element -> UIMenuElement in
-            guard let menu = element as? UIMenu else { return element }
-            return Self.insertingAction(strikethrough, intoFormatMenu: menu)
+        let actions: [UIMenuElement] = suggestedActions.map { element -> UIMenuElement in
+            guard hasSelection,
+                  let menu = element as? UIMenu,
+                  menu.identifier == .format else { return element }
+            let newFormatChildren: [UIMenuElement] = menu.children.map { child -> UIMenuElement in
+                guard let sub = child as? UIMenu, sub.identifier == .textStyle else { return child }
+                return sub.replacingChildren(sub.children + [strikethrough])
+            }
+            return menu.replacingChildren(newFormatChildren)
         }
         return UIMenu(children: actions)
-    }
-    
-    @available(iOS 16.0, *)
-    private static func insertingAction(_ action: UIAction, intoFormatMenu menu: UIMenu) -> UIMenu {
-        if menu.identifier == .textStyle || menu.identifier == .format {
-            return menu.replacingChildren(menu.children + [action])
-        }
-        let updatedChildren = menu.children.map { child -> UIMenuElement in
-            guard let submenu = child as? UIMenu else { return child }
-            return insertingAction(action, intoFormatMenu: submenu)
-        }
-        return menu.replacingChildren(updatedChildren)
     }
     
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if #unavailable(iOS 16) {
             customStyleMenu()
-        }
-        
-        guard EnabledMenuSelectors.contains(action) else {
-            return false
+            guard EnabledMenuSelectors.contains(action) else {
+                return false
+            }
         }
         
         switch action {
         case EnabledMenuSelectors.paste:
             let canPaste = UIPasteboard.general.hasStrings || UIPasteboard.general.hasImages
-            guard canPaste else {return false}
+            return canPaste && super.canPerformAction(action, withSender: sender)
         case EnabledMenuSelectors.toggleBoldface,
             EnabledMenuSelectors.toggleItalics,
             EnabledMenuSelectors.toggleUnderline,
             EnabledMenuSelectors.toggleStrikethrough:
             return selectedRange.length > 0
         default:
-            break
+            return super.canPerformAction(action, withSender: sender)
         }
-        return super.canPerformAction(action, withSender: sender)
     }
     
     private func customStyleMenu() {
