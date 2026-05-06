@@ -1,13 +1,13 @@
 {
-  "originHash" : "4ddd821ba26fd574f46ab5f02e5b3ca66c28cb7b6aa771733294345e0e936599",
+  "originHash" : "9141d9b06d9947e5508d645e4a44fbf2a20c1e3e507018b92ec0ce2369010448",
   "pins" : [
     {
       "identity" : "armarkdowntextstorage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppleArealidea/ARMarkdownTextStorage.git",
       "state" : {
-        "revision" : "59e337ad509c3a2a99b2052fc02c2f989a4c43c4",
-        "version" : "2.0.0"
+        "revision" : "7e67cdebec4072590e01098bbfcdcb7526649328",
+        "version" : "2.0.1"
       }
     }
   ],
