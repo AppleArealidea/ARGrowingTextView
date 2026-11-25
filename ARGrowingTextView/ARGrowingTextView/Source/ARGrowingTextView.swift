@@ -14,6 +14,24 @@ open class ARGrowingTextView: UIView {
     
     // MARK: Views
     public private(set) var internalTextView = ARTextViewInternalTextStyle(frame: .zero)
+    private var ownedMarkdownBaseFont: UIFont?
+    private var measurementMarkdownBaseFont: UIFont?
+    private lazy var lineMeasurementTextView: UITextView = {
+        let container = NSTextContainer(size: .zero)
+        container.widthTracksTextView = true
+        let layoutManager = NSLayoutManager()
+        layoutManager.addTextContainer(container)
+        let storage: NSTextStorage
+        if internalTextView.textStorage is MarkdownTextStorage {
+            let font = ownedMarkdownBaseFont ?? internalTextView.font ?? .preferredFont(forTextStyle: .body)
+            storage = MarkdownTextStorage(font: font)
+            measurementMarkdownBaseFont = font
+        } else {
+            storage = NSTextStorage()
+        }
+        storage.addLayoutManager(layoutManager)
+        return UITextView(frame: .zero, textContainer: container)
+    }()
     // Constraints
     private var textViewHeightConstraint: NSLayoutConstraint!
     private var textViewTopConstraint: NSLayoutConstraint!
@@ -137,7 +155,9 @@ open class ARGrowingTextView: UIView {
         let layoutManager = NSLayoutManager()
         layoutManager.addTextContainer(container)
         
-        let textStorage = MarkdownTextStorage(font: .systemFont(ofSize: 17))
+        let baseFont = UIFont.systemFont(ofSize: 17)
+        ownedMarkdownBaseFont = baseFont
+        let textStorage = MarkdownTextStorage(font: baseFont)
         textStorage.addLayoutManager(layoutManager)
         
         commonInitialiser(textContainer: container)
@@ -309,30 +329,30 @@ open class ARGrowingTextView: UIView {
         delegate?.growingTextViewDidChange?(self)
     }
     
-    // Use internalTextView for height calculations, thanks to Gwynne <http://blog.darkrainfall.org/>
     private func calculateTextViewHeight(forLinesCount lines: Int) -> CGFloat {
-        let saveText = internalTextView.text
-        
-        internalTextView.delegate = nil
-        internalTextView.isHidden = true
-        
-        var newText = "|W|"
-        let repeatCount = lines > 0 ? lines - 1 : 1
-        for _ in 0..<repeatCount {
-            newText += "\n|W|"
+        let measurementView = lineMeasurementTextView
+        measurementView.frame.size = internalTextView.frame.size
+        let font = internalTextView.font
+        measurementView.font = font
+        if let storage = measurementView.textStorage as? MarkdownTextStorage {
+            // The storage's base font can differ from the view's font.
+            let baseFont = ownedMarkdownBaseFont ?? font ?? .preferredFont(forTextStyle: .body)
+            if measurementMarkdownBaseFont != baseFont {
+                storage.setDefaultFont(baseFont)
+                measurementMarkdownBaseFont = baseFont
+            }
         }
-        
-        internalTextView.text = newText
-        
-        let calculatedHeight = measureHeight()
-        
-        internalTextView.text = saveText
-        internalTextView.isHidden = false
-        internalTextView.delegate = self
-        
-        return calculatedHeight
+        measurementView.textAlignment = internalTextView.textAlignment
+        measurementView.textContainerInset = internalTextView.textContainerInset
+        measurementView.isScrollEnabled = internalTextView.isScrollEnabled
+        measurementView.textContainer.lineFragmentPadding = internalTextView.textContainer.lineFragmentPadding
+        measurementView.textContainer.lineBreakMode = internalTextView.textContainer.lineBreakMode
+
+        let sample = Array(repeating: "|W|", count: lines > 0 ? lines : 2).joined(separator: "\n")
+        measurementView.text = sample
+        return CGFloat(ceilf(Float(measurementView.sizeThatFits(measurementView.frame.size).height)))
     }
-    
+
     private func recalculateMinAndMaxHeights() {
         if minNumberOfLines > 0 {
             sizeConfig.minHeight = calculateTextViewHeight(forLinesCount: minNumberOfLines)
@@ -464,6 +484,9 @@ extension ARGrowingTextView {
         
         if let textStorage = internalTextView.textStorage.layoutManagers.first?.textStorage as? MarkdownTextStorage {
             textStorage.setDefaultFont(font)
+            if ownedMarkdownBaseFont != nil {
+                ownedMarkdownBaseFont = font
+            }
         }
         internalTextView.font = font
     }
